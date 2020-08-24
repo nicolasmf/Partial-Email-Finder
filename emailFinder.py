@@ -22,7 +22,7 @@ def instagram(email):
     myFile.close()
 
 email = input("Enter the email you want to find please: ")
-combolist = "/home/nicolasmf/Downloads/70K+.txt" # input("Enter the path of the combolist (or drag and drop the text file) :")
+combolist = input("Enter the path of the combolist :")
 
 print()
 
