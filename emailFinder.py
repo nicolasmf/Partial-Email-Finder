@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import re
+import sys
+
 def twitter(email):
     c=0
     with open(combolist) as myFile:
@@ -27,14 +30,29 @@ def instagram(email):
     myFile.close()
     return False if c == 0 else True
 
-email = input("Enter the email you want to find please: ")
-combolist = input("Enter the path of the combolist :")
+def emailChecker(mail):
+    if not (re.fullmatch(r"[^@]+@[^@]+\.[^@]+", mail)):
+        print("Enter a valid email please.")
+        return False
+    return True
 
-print()
+try:
+    email = input("Enter the email you want to find please: ")
+    while not emailChecker(email):
+        email = input("Enter the email you want to find please: ")
+    combolist = input("Enter the path of the combolist :")
 
-if '*' in email[email.find('@')+1:email.find('.')]:
-    if not twitter(email):
-        print("[*] Email not found.")
-else:
-    if not instagram(email):
-        print("[*] Email not found.")
+    print()
+
+    if '*' in email[email.find('@')+1:email.find('.')]:
+        if not twitter(email):
+            print("[*] Email not found.")
+    else:
+        if not instagram(email):
+            print("[*] Email not found.")
+except FileNotFoundError:
+    print("[!] Combolist not found")
+    sys.exit(1)
+except KeyboardInterrupt:
+    print("\n[*] User quit")
+    sys.exit(1)
