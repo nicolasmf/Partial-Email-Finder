@@ -2,6 +2,7 @@
 
 import re
 import sys
+import os
 
 def twitter(email):
     c=0
@@ -36,11 +37,38 @@ def emailChecker(mail):
         return False
     return True
 
+def combolistChecker():
+    c = 0
+    currentDirectory = os.getcwd()
+    files = os.listdir(currentDirectory)
+    for file in files:
+        if file.endswith('.txt'):
+            c += 1
+            wordlist = file
+    if c == 1:
+        answer  = input("[*] Combolist detected, do you want to use "+wordlist+"? (Y/n) ")
+        if answer == '' or answer.lower() == 'y':
+            return wordlist
+        else:
+            combolist = input("Enter the path of the combolist : ")
+    elif c > 1:
+        print("[!] Multiple combolists detected.\n")
+        for file in files:
+            if file.endswith('.txt'):
+                answer = input("Do you want to use " + file+"? (Y/n) ")
+                if answer == '' or answer.lower() == 'y':
+                    return file
+        print("[!] No more combolists detected.")
+        combolist = input("Enter the path of the combolist : ")
+    else:
+        combolist = input("Enter the path of the combolist : ")
+    return combolist
+
 try:
     email = input("Enter the email you want to find please: ")
     while not emailChecker(email):
         email = input("Enter the email you want to find please: ")
-    combolist = input("Enter the path of the combolist :")
+    combolist = combolistChecker()
 
     print()
 
