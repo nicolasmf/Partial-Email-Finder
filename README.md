@@ -19,3 +19,10 @@ I used combolist search to find a full mail. This can be useful for doxing, reco
 `chmod +x emailFinder.py`
 
 `./emailFinder.py`
+
+## TODO
+
+[ ] Add UI
+[ ] Clean the code
+[ ] Add comments
+[ ] Better file search
