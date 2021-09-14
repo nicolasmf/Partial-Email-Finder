@@ -22,7 +22,7 @@ I used combolist search to find a full mail. This can be useful for doxing, reco
 
 ## TODO
 
-[ ] Add UI
-[ ] Clean the code
-[ ] Add comments
-[ ] Better file search
+- [ ] Add UI
+- [ ] Clean the code
+- [ ] Add comments
+- [ ] Better file search
